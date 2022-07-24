@@ -1,0 +1,31 @@
+plugins {
+    id 'application'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+
+    implementation 'com.google.guava:guava:31.0.1-jre'
+}
+
+application {
+    mainClass = 'com.ikarabulut.server.App'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    testLogging {
+        events "PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR"
+    }
+    failFast = true
+}
