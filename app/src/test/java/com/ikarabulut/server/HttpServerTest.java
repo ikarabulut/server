@@ -10,9 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class HttpServerTest {
 
     @Test
-    void runningServerShouldBeBoundToPassedPort() throws IOException {
+    void start_ShouldBoundServerSocketToPassedPort() throws IOException {
         int port = 5000;
-        HttpServer server = new HttpServer(port);
+        Listenable listener = new MockListener();
+        HttpServer server = new HttpServer(port, listener);
 
         server.start();
         ServerSocket serverSocket = server.getServerSocket();
@@ -20,6 +21,20 @@ class HttpServerTest {
         assertTrue(serverSocket.isBound(), "isBound returned False when the server should be bound to port 5000");
         assertEquals(port, serverSocket.getLocalPort(), "the servers port should have been 5000 but returned" + serverSocket.getLocalPort());
 
+        serverSocket.close();
+    }
+
+    @Test
+    void start_ShouldBeListeningForConnections() throws IOException {
+        int port = 5000;
+        Listenable listener = new MockListener();
+        HttpServer server = new HttpServer(port, listener);
+
+        server.start();
+
+        assertTrue(listener.isListening());
+
+        ServerSocket serverSocket = server.getServerSocket();
         serverSocket.close();
     }
 
