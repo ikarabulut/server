@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HttpServerTest {
-
+    private int PORT = 5000;
     @Test
     void start_ShouldBoundServerSocketToPassedPort() throws IOException {
         int port = 5000;
@@ -33,6 +33,21 @@ class HttpServerTest {
         server.start();
 
         assertTrue(listener.isListening());
+
+        ServerSocket serverSocket = server.getServerSocket();
+        serverSocket.close();
+    }
+
+    @Test
+    void start_ShouldExecuteASocketConnectionInAThread() throws IOException {
+        Listenable listener = new MockListener();
+        HttpServer server = new HttpServer(PORT, listener);
+
+        server.start();
+
+        int expectedRunningThreads = 1;
+        int actualRunningThreads = server.getRunningThreadsCount();
+        assertEquals(expectedRunningThreads, actualRunningThreads);
 
         ServerSocket serverSocket = server.getServerSocket();
         serverSocket.close();

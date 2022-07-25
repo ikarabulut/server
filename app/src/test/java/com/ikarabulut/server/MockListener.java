@@ -1,6 +1,5 @@
 package com.ikarabulut.server;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -8,9 +7,9 @@ public class MockListener implements Listenable {
     private boolean serverSocketIsListening;
 
     @Override
-    public Socket beginListening(ServerSocket serverSocket) throws IOException {
+    public Socket beginListening(ServerSocket serverSocket) {
         this.serverSocketIsListening = true;
-        return null;
+        return new Socket();
     }
 
     @Override
