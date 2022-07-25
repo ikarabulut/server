@@ -1,5 +1,8 @@
-package com.ikarabulut.server;
+package com.ikarabulut.server.unitTests;
 
+import com.ikarabulut.server.connection.ActiveConnection;
+import com.ikarabulut.server.connection.StreamGenerator;
+import com.ikarabulut.server.mocks.MockIoStream;
 import org.junit.jupiter.api.Test;
 
 import java.net.Socket;

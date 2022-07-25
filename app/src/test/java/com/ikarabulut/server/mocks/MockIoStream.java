@@ -1,4 +1,6 @@
-package com.ikarabulut.server;
+package com.ikarabulut.server.mocks;
+
+import com.ikarabulut.server.connection.StreamGenerator;
 
 import java.io.IOException;
 import java.io.InputStream;

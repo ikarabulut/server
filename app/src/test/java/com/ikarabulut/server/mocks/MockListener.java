@@ -1,4 +1,6 @@
-package com.ikarabulut.server;
+package com.ikarabulut.server.mocks;
+
+import com.ikarabulut.server.listener.Listenable;
 
 import java.net.ServerSocket;
 import java.net.Socket;

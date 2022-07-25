@@ -1,4 +1,4 @@
-package com.ikarabulut.server;
+package com.ikarabulut.server.listener;
 
 import java.io.IOException;
 import java.net.ServerSocket;

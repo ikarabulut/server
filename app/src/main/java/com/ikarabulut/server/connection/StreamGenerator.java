@@ -1,4 +1,4 @@
-package com.ikarabulut.server;
+package com.ikarabulut.server.connection;
 
 import java.io.IOException;
 import java.io.InputStream;
