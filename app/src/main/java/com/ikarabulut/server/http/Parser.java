@@ -17,7 +17,7 @@ public class Parser {
         this.connectionInputStream = connectionInputStream;
     }
 
-    public void parse() throws IOException {
+    public Request parse() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(this.connectionInputStream));
         StringBuilder builder = new StringBuilder();
         String[] splitRequest = generateSplitRequest(reader, builder);
@@ -36,6 +36,7 @@ public class Parser {
             this.requestBody = splitRequest[1];
         }
 
+        return new Request(this.requestInitialLine, this.requestHeaders, this.requestBody);
     }
 
     public Map<String, String> getRequestInitialLine() {

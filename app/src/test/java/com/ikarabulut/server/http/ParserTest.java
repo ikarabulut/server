@@ -81,4 +81,19 @@ class ParserTest {
         in.close();
     }
 
+    @Test
+    void parse_ShouldReturnANewRequestObject_WithTheParsedFields() throws IOException {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        Parser parser = new Parser(in);
+
+        Request parsedRequestObject = parser.parse();
+
+        assertEquals(parser.getRequestInitialLine(), parsedRequestObject.getInitialLine());
+        assertEquals(parser.getRequestHeaders(), parsedRequestObject.getHeaders());
+        assertEquals(parser.getRequestBody(), parsedRequestObject.getBody());
+
+
+        in.close();
+    }
+
 }
