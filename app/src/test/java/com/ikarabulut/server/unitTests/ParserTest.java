@@ -1,5 +1,7 @@
-package com.ikarabulut.server.http;
+package com.ikarabulut.server.unitTests;
 
+import com.ikarabulut.server.http.Parser;
+import com.ikarabulut.server.http.Request;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
