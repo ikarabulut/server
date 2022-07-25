@@ -22,14 +22,6 @@ public class ActiveConnection implements Runnable {
 
     }
 
-    public OutputStream getConnectionOutputStream() {
-        return this.connectionOutputStream;
-    }
-
-    public InputStream getConnectionInputStream() {
-        return this.connectionInputStream;
-    }
-
     private void setupConnectionIOStream() {
         try {
             connectionIO.setConnectedSocket(connectedSocket);
